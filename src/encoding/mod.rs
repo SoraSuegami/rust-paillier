@@ -20,6 +20,12 @@ pub struct EncodedCiphertext<T> {
     _phantom: PhantomData<T>,
 }
 
+impl<T> EncodedCiphertext<T> {
+    pub fn new(raw: BigInt, components: usize) -> Self {
+        Self { raw, components, _phantom: PhantomData }
+    }
+}
+
 pub fn pack<T>(components: &[T], component_bitsize: usize) -> BigInt
 where
     BigInt: From<T>,
